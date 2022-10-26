@@ -11,7 +11,7 @@
 var oFSO = WScript.CreateObject("Scripting.FileSystemObject");
 var oShell = WScript.CreateObject("WScript.Shell");
 
-var sBaseDir = oFSO.GetAbsolutePathName('.');
+var sBaseDir = oFSO.GetAbsolutePathName('..');
 var fConfig = oFSO.OpenTextFile('app\\config.cfg', 1); // 1 = for reading
 var sConfig = (fConfig.AtEndOfStream) ? "" : fConfig.ReadAll();
 
@@ -84,7 +84,7 @@ if (!oFSO.FileExists(Rexe)) {
 
 function enquote(s) { return "\"" + s + "\""; }
 
-var RScriptFile    = sBaseDir + "\\dist\\script\\R\\run.R";
+var RScriptFile    = sBaseDir + "\\FHAST_APP\\dist\\script\\R\\run.R";
 var Outfile        = sLogPath + "\\" + sLogFile;
 
 var strCommand     = [enquote(Rexe), Ropts, enquote(RScriptFile), ">", enquote(Outfile), "2>&1"].join(" ");
