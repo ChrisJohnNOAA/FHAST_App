@@ -9,3 +9,40 @@ jsonlite
 
 # if deploying shiny based applications:
 shiny
+shinyFiles
+here
+data.table
+
+# Below here from load_libraries.R
+# Control Libraries
+tictoc
+here
+fs
+knitr
+
+# Data manipulate libraries
+tidyverse
+dplyr
+stringr
+lubridate
+
+# Programming and processing
+purrr
+furrr
+parallel
+
+# GIS libraries
+sf
+lutz # used to get time zones
+shadow
+maptools
+smoothr
+exactextractr
+raster
+terra
+
+# Data viz libraries 
+ggplot2
+viridis
+patchwork
+leaflet

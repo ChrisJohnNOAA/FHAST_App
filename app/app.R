@@ -1,2 +1,2 @@
 # app launching code, e.g.:
-shiny::runApp("./app/shiny/", launch.browser=TRUE)
+shiny::runApp("../scripts/R/ui/", launch.browser=TRUE)
