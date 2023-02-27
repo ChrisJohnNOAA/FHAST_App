@@ -19,17 +19,22 @@ tictoc
 here
 fs
 knitr
+R.utils
+tools
 
 # Data manipulate libraries
 tidyverse
 dplyr
 stringr
 lubridate
+data.table
 
 # Programming and processing
 purrr
+future
 furrr
 parallel
+igraph
 
 # GIS libraries
 sf
@@ -46,3 +51,5 @@ ggplot2
 viridis
 patchwork
 leaflet
+
+nlrx
