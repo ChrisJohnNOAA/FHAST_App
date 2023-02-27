@@ -1,7 +1,7 @@
 # capture the current working directory
 # set the package search path to the app specific library
 # and the local R-portable site library
-appwd = getwd()
+appwd = file.path(getwd(), 'FHAST_app')
 applibpath = file.path(appwd, 'app', 'library')
 
 # create app/library if it doesn't exist (e.g. first run)

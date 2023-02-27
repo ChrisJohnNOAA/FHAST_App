@@ -1,1 +1,2 @@
-wscript dist\script\wsf\run.wsf
+pushd %~dp0
+wscript .\dist\script\wsf\run.wsf

@@ -75,7 +75,7 @@ var Rhome = oConfig.r_exec.home ? oConfig.r_exec.home : oDEFAULTS.r_exec.home;
 var Rcmd  = oConfig.r_exec.command ? oConfig.r_exec.command : oDEFAULTS.r_exec.command;
 var Ropts = oConfig.r_exec.options ? oConfig.r_exec.options : oDEFAULTS.r_exec.options;
 
-Rexe = Rhome + "\\" + Rcmd;
+Rexe = sBaseDir + "\\" + Rhome + "\\" + Rcmd;
 
 if (!oFSO.FileExists(Rexe)) {
 	oShell.Popup('Error: R executable not found:\n' + Rexe);
@@ -84,7 +84,7 @@ if (!oFSO.FileExists(Rexe)) {
 
 function enquote(s) { return "\"" + s + "\""; }
 
-var RScriptFile    = sBaseDir + "\\FHAST_APP\\dist\\script\\R\\run.R";
+var RScriptFile    = sBaseDir + "\\FHAST_app\\dist\\script\\R\\run.R";
 var Outfile        = sLogPath + "\\" + sLogFile;
 
 var strCommand     = [enquote(Rexe), Ropts, enquote(RScriptFile), ">", enquote(Outfile), "2>&1"].join(" ");
@@ -94,7 +94,7 @@ var intWindowStyle = 0;
 // As a workaround create a temporary .bat file to invoke strCommand as needed
 var batFilePath = enquote(sAppUPath + '\\run.bat');
 var batFile = oFSO.CreateTextFile(sAppUPath + '\\run.bat', 2); // 2 = for writing
-batFile.WriteLine("cd " + enquote(sBaseDir));
+batFile.WriteLine("pushd " + enquote(sBaseDir));
 batFile.WriteLine(strCommand);
 batFile.Close();
 
