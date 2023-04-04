@@ -1,3 +1,39 @@
+# Signed executable
+
+Convert the powershell script to an executable:
+
+ps2exe .\FHAST_Shiny.ps1
+
+Sign the executable:
+
+signtool sign /tr http://CAtimestampserver.com /td SHA256 /fd SHA256 FHAST_Shiny.exe
+
+## Creating a Testing signing certificate
+
+Using PowerShell
+
+New-SelfSignedCertificate -DnsName chris.john@noaa.gov -Type CodeSigning -CertStoreLocation cert:\CurrentUser\My
+Export-Certificate -Cert (Get-ChildItem Cert:\CurrentUser\My -CodeSigningCert)[0] -FilePath code_signing.crt
+Import-Certificate -FilePath .\code_signing.crt -Cert Cert:\CurrentUser\TrustedPublisher
+
+
+
+## Using Trusted Certificates
+
+### Creating a Certificate Signing Request
+https://help.sectigostore.com/support/solutions/articles/22000266869-java-keystore
+
+### Install certificates from authority to machine
+
+Download from authority and install (can probably double click)
+
+### Extract private key
+keytool -srckeystore keystore.jks -srcstorepass {password}  -destkeystore private.p12 -deststoretype PKCS12 -deststorepass {password} -destkeypass {password} -importkeystore
+
+### Sign the executable
+
+signtool sign /debug /tr http://timestamp.comodoca.com/rfc3161 /td SHA256 /fd SHA256 /f private.p12 /p {password} FHAST_Shiny.exe
+
 # DesktopDeployR
 A framework for deploying self-contained R-based applications to the desktop
 
